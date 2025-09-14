@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAPER_TITLE_HERE — Project Page</title>
+  <meta name="description" content="PAPER_TITLE_HERE - 论文主页：标题、作者、摘要、方法总览（pipeline）、演示视频与引用信息。">
+  <meta property="og:title" content="PAPER_TITLE_HERE">
+  <meta property="og:description" content="论文主页：标题、作者、摘要、方法总览（pipeline）、演示视频与引用信息。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/pipeline.png">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>📄</text></svg>">
+
+  <style>
+    :root{
+      --bg:#0b1020;         /* 深色背景 */
+      --panel:#0f172a;      /* 面板背景 */
+      --text:#e5e7eb;       /* 主文本 */
+      --muted:#94a3b8;      /* 次文本 */
+      --brand:#60a5fa;      /* 品牌色 */
+      --accent:#22d3ee;     /* 强调色 */
+      --maxw:1080px;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --border:1px solid rgba(255,255,255,.07);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f8fafc;
+        --panel:#ffffff;
+        --text:#0f172a;
+        --muted:#475569;
+        --brand:#2563eb;
+        --accent:#0891b2;
+        --border:1px solid rgba(2,6,23,.08);
+      }
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:auto;padding:24px}
+    header.nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom:var(--border);
+    }
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:0 0 20px color-mix(in oklab, var(--brand) 50%, transparent)}
+    .nav__links{display:flex;gap:18px;flex-wrap:wrap}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:color-mix(in oklab, var(--panel) 70%, transparent);border:var(--border);font-size:14px;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:var(--border);background:color-mix(in oklab, var(--panel) 60%, transparent);color:var(--text);text-decoration:none;font-weight:600;box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px);transition:.2s box-shadow,.2s transform;text-decoration:none}
+    .btn--primary{background:linear-gradient(135deg,var(--brand),var(--accent));color:white;border:none}
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin:28px auto
+    }
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    .card{background:var(--panel);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:24px}
+    h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:.3em 0 .2em}
+    h2{font-size:clamp(22px,3vw,28px);margin:0 0 .4em}
+    h3{font-size:20px;margin:1em 0 .4em}
+    .muted{color:var(--muted)}
+    .authors{display:flex;flex-wrap:wrap;gap:10px;margin:.6em 0 1em}
+    .affils{margin:.6em 0 1.2em}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+    .figure{overflow:hidden;border-radius:var(--radius);border:var(--border)}
+    .figure img{display:block;width:100%;height:auto}
+    .caption{font-size:14px;color:var(--muted);padding:10px 6px}
+    .grid{display:grid;gap:18px}
+    .grid.videos{grid-template-columns:1fr 1fr}
+    @media (max-width:900px){.grid.videos{grid-template-columns:1fr}}
+    video{width:100%;height:auto;border-radius:14px;border:var(--border);background:#000}
+    .codebox{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:color-mix(in oklab, var(--panel) 75%, transparent);border:var(--border);border-radius:12px;padding:16px;overflow:auto}
+    footer{padding:30px 0;color:var(--muted);text-align:center}
+    .toc{display:flex;gap:8px;flex-wrap:wrap}
+    .toc a{font-size:14px;color:var(--muted);padding:6px 10px;border-radius:999px;border:var(--border)}
+    .toc a:hover{color:var(--text);text-decoration:none}
+    .kbd{padding:.2em .5em;border-radius:6px;border:var(--border);background:color-mix(in oklab, var(--panel) 70%, transparent);font-family:ui-monospace,monospace;font-size:.9em}
+    .backtop{position:fixed;right:16px;bottom:16px;display:none}
+    .backtop.show{display:block}
+  </style>
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>PAPER_TITLE_HERE</span>
+      </div>
+      <nav class="nav__links">
+        <a href="#abstract">摘要</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#videos">视频演示</a>
+        <a href="#bibtex">BibTeX</a>
+        <a href="#links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 头图/简介区 -->
+    <section class="hero">
+      <div class="card pad">
+        <div class="chip" aria-label="paper meta">
+          <span>📄</span><span>Last updated: <span id="last-updated">2025-09-14</span></span>
+        </div>
+        <h1>PAPER_TITLE_HERE</h1>
+        <div class="authors">
+          <!-- 示例：姓名上标单位编号；如需加粗通讯作者可用 <strong> -->
+          <span>Author A<sup>1</sup></span>
+          <span>Author B<sup>2</sup></span>
+          <span>Author C<sup>1,3</sup></span>
+          <span class="muted">（按需要添加 * 表示共同一作或通讯作者）</span>
+        </div>
+        <div class="affils muted">
+          <div><sup>1</sup> Affiliation One</div>
+          <div><sup>2</sup> Affiliation Two</div>
+          <div><sup>3</sup> Affiliation Three</div>
+        </div>
+        <div id="links" class="cta">
+          <!-- 将 href 换为真实链接 -->
+          <a class="btn btn--primary" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv / PDF</a>
+          <a class="btn" href="https://github.com/yourname/yourrepo" target="_blank" rel="noopener">Code</a>
+          <a class="btn" href="#videos">🎬 视频演示</a>
+        </div>
+      </div>
+
+      <!-- 右侧展示总览图（也可放 teaser） -->
+      <figure class="card figure" aria-labelledby="fig-teaser">
+        <!-- 如需使用静态图： -->
+        <img src="assets/pipeline.png" alt="方法总览图（Pipeline/Teaser）" loading="eager">
+        <figcaption class="caption" id="fig-teaser">图 1：方法总览图（可用 pipeline 或 teaser 图）。</figcaption>
+      </figure>
+    </section>
+
+    <!-- 摘要 -->
+    <section id="abstract" class="card pad" aria-labelledby="h-abstract">
+      <h2 id="h-abstract">摘要</h2>
+      <p>
+        在此粘贴你的论文摘要。建议与论文 PDF 保持一致，段落不宜过长，适当加粗关键词以提升可读性。
+        如果有贡献点，可在摘要末尾用一句话点明：<em>我们的方法在 XX 数据集上取得了 SOTA/competitive 的表现，并在复杂场景中保持了稳定一致的效果。</em>
+      </p>
+    </section>
+
+    <!-- Pipeline 专区（独立于头图，便于跳转） -->
+    <section id="pipeline" class="card pad" aria-labelledby="h-pipeline" style="margin-top:18px">
+      <h2 id="h-pipeline">方法总览（Pipeline）</h2>
+      <figure class="figure">
+        <img src="assets/pipeline.png" alt="方法总览 Pipeline" loading="lazy">
+      </figure>
+      <div class="caption">图 2：Pipeline 细节说明。你可以在此补充模块命名、数据流向、关键设计点（例如：Dual-Encoder、Flow-Guided Attention、Loss 设计等）。</div>
+    </section>
+
+    <!-- 视频演示 -->
+    <section id="videos" class="card pad" aria-labelledby="h-videos" style="margin-top:18px">
+      <h2 id="h-videos">视频演示</h2>
+      <p class="muted" style="margin-top:-4px">下方为两个核心演示视频。支持本地 <code>.mp4</code> 文件或嵌入 YouTube（见注释）。</p>
+      <div class="grid videos" style="margin-top:12px">
+        <div>
+          <h3>演示视频 A</h3>
+          <!-- 本地 mp4 示例： -->
+          <video controls preload="metadata" poster="assets/video1_poster.jpg">
+            <source src="assets/video1.mp4" type="video/mp4">
+            你的浏览器不支持 video 标签，请下载 <a href="assets/video1.mp4">视频 A</a>。
+          </video>
+          <!-- 如需 YouTube，替换为 iframe（保留一个即可）：
+          <div class="video-embed" style="position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;border:var(--border)">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="YouTube video player" frameborder="0" allowfullscreen
+              style="position:absolute;inset:0;width:100%;height:100%"></iframe>
+          </div>
+          -->
+        </div>
+        <div>
+          <h3>演示视频 B</h3>
+          <video controls preload="metadata" poster="assets/video2_poster.jpg">
+            <source src="assets/video2.mp4" type="video/mp4">
+            你的浏览器不支持 video 标签，请下载 <a href="assets/video2.mp4">视频 B</a>。
+          </video>
+        </div>
+      </div>
+      <div class="caption">视频建议：使用 H.264 编码（mp4），宽度 1280 或 1920，码率 4–8 Mbps，带封面图以提升加载体验。</div>
+    </section>
+
+    <!-- 引用 / BibTeX -->
+    <section id="bibtex" class="card pad" aria-labelledby="h-bibtex" style="margin-top:18px">
+      <h2 id="h-bibtex">引用（BibTeX）</h2>
+      <pre class="codebox"><code>@article{YourKey2025,
+  title   = {PAPER_TITLE_HERE},
+  author  = {Author A and Author B and Author C},
+  journal = {Journal / arXiv preprint arXiv:XXXX.XXXXX},
+  year    = {2025}
+}</code></pre>
+      <div class="toc">
+        <a href="#abstract">摘要</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#videos">视频</a>
+      </div>
+    </section>
+
+    <!-- 附加信息（可选） -->
+    <section class="card pad" aria-labelledby="h-notes" style="margin-top:18px">
+      <h2 id="h-notes">补充说明（可选）</h2>
+      <ul>
+        <li>数据与模型下载、复现实验指引、许可证信息等可以放在这里或另起页面。</li>
+        <li>如需多语言：可在导航加入“English / 中文”切换，并提供两个版本的页面。</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Authors. This page is hosted on GitHub Pages.</p>
+      <a class="btn backtop" id="backtop" href="#" title="回到顶部">⬆︎ 回到顶部</a>
+    </footer>
+  </main>
+
+  <script>
+    // 自动年份 & 回到顶部
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const topBtn = document.getElementById('backtop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+    });
+    topBtn.addEventListener('click', (e)=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+    // 如果你将此页面用于多个版本发布，可自动写入最后更新时间
+    // document.getElementById('last-updated').textContent = new Date().toISOString().slice(0,10);
+  </script>
+</body>
+</html>  
