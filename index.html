@@ -1,227 +1,174 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PAPER_TITLE_HERE — Project Page</title>
-  <meta name="description" content="论文主页：标题、作者、摘要、方法总览、演示视频与引用信息。">
-  <meta property="og:title" content="PAPER_TITLE_HERE">
-  <meta property="og:description" content="Project page with abstract, method (pipeline), videos and BibTeX.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/pipeline.png">
-  <meta name="theme-color" content="#0b1020">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🎥</text></svg>">
-
-  <style>
-    :root{
-      --bg:#0b1020; --text:#e5e7eb; --muted:#94a3b8;
-      --panel:#0f172a; --brand:#60a5fa; --accent:#22d3ee;
-      --b:#1e293b; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
-      --maxw:1100px; --link:var(--brand);
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --b:#e2e8f0; --link:#2563eb; }
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Noto Sans",sans-serif}
-    a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--maxw);margin:auto;padding:22px}
-    /* 顶部导航 */
-    .nav{position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);
-      backdrop-filter:saturate(180%) blur(10px);
-      background:color-mix(in oklab, var(--bg) 82%, transparent);
-    }
-    .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
-    .brand .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:0 0 20px #0007}
-    .nav__links{display:flex;gap:16px;flex-wrap:wrap}
-    .nav__links a{color:var(--muted);padding:10px 0}
-    .nav__links a:hover{color:var(--text)}
-    /* 区块与标题 */
-    section{margin:28px 0}
-    h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:.2em 0 .3em}
-    h2{font-size:clamp(22px,3vw,30px);margin:0 0 .5em}
-    h3{font-size:20px;margin:1em 0 .4em}
-    .muted{color:var(--muted)}
-    .card{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .pad{padding:22px}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
-    @media (max-width:920px){.hero{grid-template-columns:1fr}}
-    .authors{display:flex;flex-wrap:wrap;gap:10px;margin:.4em 0 1em}
-    .affils{margin:.6em 0 1.2em}
-    .chips{display:flex;gap:10px;flex-wrap:wrap;margin:.6em 0}
-    .chip{font-size:14px;color:var(--muted);padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--text);font-weight:600}
-    .btn--primary{background:linear-gradient(135deg,var(--brand),var(--accent));border:none;color:#fff}
-    /* 媒体 */
-    .figure{overflow:hidden;border-radius:var(--radius);border:1px solid rgba(255,255,255,.07)}
-    .figure img,.figure video{display:block;width:100%;height:auto}
-    .caption{font-size:14px;color:var(--muted);padding:8px 6px}
-    .grid{display:grid;gap:18px}
-    .videos{grid-template-columns:1fr 1fr}
-    @media (max-width:920px){.videos{grid-template-columns:1fr}}
-    video{border-radius:12px;background:#000;border:1px solid rgba(255,255,255,.08)}
-    /* 对比 / 悬停原视频效果（可选） */
-    .hover-swap{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-    .hover-swap img,.hover-swap video{display:block;width:100%;height:auto;transition:opacity .25s ease}
-    .hover-swap .top{position:absolute;inset:0;opacity:0}
-    .hover-swap:hover .top{opacity:1}
-    footer{padding:28px 0;color:var(--muted);text-align:center}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAPER_TITLE_HERE</title>
+<meta name="description" content="Project page with title, authors, abstract, method, pipeline, videos and results.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🎬</text></svg>">
+<style>
+  :root{
+    --bg:#ffffff; --text:#111418; --muted:#5b6672; --line:#e9eef3;
+    --link:#0366d6; --chip:#f3f6fa; --chipbd:#dde6ef; --maxw:920px;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",sans-serif}
+  a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
+  header{text-align:center;padding:28px 0 8px}
+  h1{font-size:clamp(26px,4vw,36px);margin:.2em 0 .4em}
+  .authors{margin:.4em 0;color:var(--muted)}
+  .authors a{color:inherit}
+  .venue{margin:.3em 0 1em;font-weight:600;color:#666}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0 16px}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--chipbd);font-weight:600}
+  .hero{display:flex;justify-content:center}
+  .hero img{max-width:480px;width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+  section{padding:32px 0;border-top:1px solid var(--line)}
+  h2{font-size:22px;text-align:center;margin:0 0 14px}
+  p{margin:.5em 0}
+  .center{max-width:800px;margin:0 auto}
+  .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:center;justify-items:center;margin:10px 0 6px}
+  .method-grid img{width:100%;max-width:240px;border-radius:6px;border:1px solid var(--line)}
+  .method-caption{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;color:var(--muted);font-size:14px;margin-top:6px}
+  .pipeline{display:flex;justify-content:center}
+  .pipeline img{max-width:880px;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+  .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .results-grid img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+  .videos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:820px){.method-grid,.method-caption{grid-template-columns:1fr 1fr}.videos,.results-grid{grid-template-columns:1fr}}
+  video{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);background:#000}
+  footer{border-top:1px solid var(--line);text-align:center;color:var(--muted);padding:24px 0;margin-top:20px;font-size:14px}
+</style>
 </head>
 <body>
-  <!-- 顶部导航 -->
-  <header class="nav">
-    <div class="wrap nav__inner">
-      <div class="brand">
-        <span class="dot"></span><span>PAPER_TITLE_HERE</span>
+  <div class="wrap">
+    <!-- 顶部：标题 / 作者 / 会议 / 徽章 -->
+    <header>
+      <h1>PAPER_TITLE_HERE: Optional Subtitle</h1>
+      <div class="authors">
+        <a href="#">Author A</a>, <a href="#">Author B</a>, <a href="#">Author C</a><br>
+        <span class="venue">ICLR 2024（示例）</span>
       </div>
-      <nav class="nav__links">
-        <a href="#abstract">摘要</a>
-        <a href="#method">Method</a>
-        <a href="#demos">Demos</a>
-        <a href="#bibtex">BibTeX</a>
-        <a href="#ack">致谢</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- Hero：标题/作者 + 右侧 pipeline/teaser -->
-    <section class="hero">
-      <div class="card pad">
-        <div class="chips">
-          <span class="chip">📄 Last updated: <span id="last-updated">2025-09-14</span></span>
-          <span class="chip">Conference/Journal · 2025</span>
-        </div>
-        <h1>PAPER_TITLE_HERE</h1>
-
-        <div class="authors">
-          <span>Author A<sup>1</sup>*</span>
-          <span>Author B<sup>2</sup>*</span>
-          <span>Author C<sup>1,3</sup></span>
-          <span class="muted">* Equal contribution</span>
-        </div>
-
-        <div class="affils muted">
-          <div><sup>1</sup> Affiliation One</div>
-          <div><sup>2</sup> Affiliation Two</div>
-          <div><sup>3</sup> Affiliation Three</div>
-        </div>
-
-        <div class="cta" id="links">
-          <a class="btn btn--primary" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">📄 arXiv / PDF</a>
-          <a class="btn" href="https://github.com/yourname/yourrepo" target="_blank" rel="noopener">💻 Code</a>
-          <a class="btn" href="#demos">🎬 Demos</a>
-          <a class="btn" href="#bibtex">🔖 BibTeX</a>
-        </div>
+      <div class="badges">
+        <a class="badge" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">📄 Paper</a>
+        <a class="badge" href="#" target="_blank">📦 Supplementary</a>
+        <a class="badge" href="https://github.com/your/repo" target="_blank">💻 Code</a>
+        <a class="badge" href="#videos">🎥 Demo</a>
+        <a class="badge" href="#" target="_blank">🧠 arXiv</a>
       </div>
-
-      <figure class="figure card" aria-labelledby="fig-teaser">
-        <img src="assets/pipeline.png" alt="Pipeline / Teaser">
-        <figcaption id="fig-teaser" class="caption">图 1：整体方法概览（Pipeline/Teaser）。</figcaption>
-      </figure>
-    </section>
+      <div class="hero">
+        <!-- 顶部展示图（可放 teaser 帧或短动图） -->
+        <img src="assets/teaser.jpg" alt="teaser / keyframe">
+      </div>
+    </header>
 
     <!-- 摘要 -->
-    <section id="abstract" class="card pad">
+    <section id="abstract">
       <h2>Abstract</h2>
-      <p>
-        在此粘贴你的论文摘要。建议与 PDF 保持一致，适度加粗关键词。示例：我们提出 <strong>TCOVG</strong>，一个基于扩散模型的视频生成/编辑框架，
-        在保持语义/结构一致性的同时提升时序稳定性与细节保真。方法无需额外训练，可与现有编辑方法配合使用，
-        并在多种真实场景视频上展示出竞争性结果。
-      </p>
+      <div class="center">
+        <p>
+          在此粘贴你的摘要。保持与论文一致。可用一两句话点出你们的核心发现，例如：
+          我们观察到视频的一致性与扩散模型内部特征的时序一致性高度相关，因此提出
+          <strong>METHOD_NAME</strong> 来在无需额外训练的情况下实现稳定的视频编辑/生成。
+        </p>
+      </div>
     </section>
 
-    <!-- 方法（放 Pipeline 细节） -->
-    <section id="method" class="card pad">
+    <!-- Method（含三列对比 + 文字 + Pipeline 图） -->
+    <section id="method">
       <h2>Method</h2>
-      <p class="muted">概述关键思想与模块：例如 Dual-Encoder Frequency Fusion、Flow-Guided Temporal Attention、Token Propagation 等。</p>
-      <figure class="figure">
-        <img src="assets/pipeline.png" alt="Method Pipeline Detail">
-      </figure>
-      <div class="caption">图 2：方法细节图。可标注模块、数据流向与损失设计。</div>
+      <div class="center">
+        <p>
+          简述整体思路与关键组件（例如 token 传播、特征对齐、频域融合、流引导注意力等），
+          对应下方示例对比图与 Pipeline。
+        </p>
+
+        <!-- 三列对比示例（上两行图片 + 下方说明） -->
+        <div class="method-grid">
+          <img src="assets/method_row1_col1.jpg" alt="Original">
+          <img src="assets/method_row1_col2.jpg" alt="Per-frame">
+          <img src="assets/method_row1_col3.jpg" alt="Ours">
+          <img src="assets/method_row2_col1.jpg" alt="Original">
+          <img src="assets/method_row2_col2.jpg" alt="Per-frame">
+          <img src="assets/method_row2_col3.jpg" alt="Ours">
+        </div>
+        <div class="method-caption">
+          <div>Original</div><div>Per-frame Editing</div><div>Ours</div>
+        </div>
+
+        <p>
+          我们的关键结论：通过在扩散模型内部的一致性约束（如注意力特征对齐、跨帧 token 传播等），
+          可在不同场景与风格下显著提升时序稳定性，同时保持高质量的编辑效果。
+        </p>
+      </div>
+
+      <!-- Pipeline 图 -->
+      <div class="pipeline" style="margin-top:18px">
+        <img src="assets/pipeline.png" alt="Pipeline diagram">
+      </div>
     </section>
 
-    <!-- Demos：两个核心视频（也可扩展更多） -->
-    <section id="demos" class="card pad">
-      <h2>Editing / Generation Demos</h2>
-      <div class="grid videos" style="margin-top:10px">
-        <div>
-          <h3>Demo A</h3>
-          <video controls preload="metadata" poster="assets/video1_poster.jpg">
-            <source src="assets/video1.mp4" type="video/mp4">
-            Your browser does not support the video tag. Download <a href="assets/video1.mp4">Video A</a>.
-          </video>
-          <div class="caption">说明示例：输入视频 + 文本提示/结构控制 → 输出结果。</div>
-        </div>
-        <div>
-          <h3>Demo B</h3>
-          <video controls preload="metadata" poster="assets/video2_poster.jpg">
-            <source src="assets/video2.mp4" type="video/mp4">
-            Your browser does not support the video tag. Download <a href="assets/video2.mp4">Video B</a>.
-          </video>
-          <div class="caption">说明示例：强调时序一致性与细节保真。</div>
+    <!-- 结果网格（静态帧或短动图） -->
+    <section id="results">
+      <h2>Editing Results</h2>
+      <div class="center">
+        <p class="muted" style="text-align:center">（可替换为动图或每格悬停切换原图与结果）</p>
+        <div class="results-grid">
+          <img src="assets/res_01.jpg" alt="result 1">
+          <img src="assets/res_02.jpg" alt="result 2">
+          <img src="assets/res_03.jpg" alt="result 3">
+          <img src="assets/res_04.jpg" alt="result 4">
+          <img src="assets/res_05.jpg" alt="result 5">
+          <img src="assets/res_06.jpg" alt="result 6">
         </div>
       </div>
     </section>
 
-    <!-- （可选）对比区：悬停显示原视频或不同方法 -->
-    <section class="card pad">
-      <h2>Comparisons (Optional)</h2>
-      <p class="muted">你可以用「悬停切换」来展示输入 vs. 输出 或不同方法对比：</p>
-      <div class="grid videos">
-        <div>
-          <h3>Input → Ours (hover)</h3>
-          <div class="hover-swap">
-            <img src="assets/input_frame.jpg" alt="Input frame">
-            <img class="top" src="assets/ours_frame.jpg" alt="Ours frame">
+    <!-- 两个演示视频 -->
+    <section id="videos">
+      <h2>Demos</h2>
+      <div class="center">
+        <div class="videos">
+          <div>
+            <p style="margin:.2em 0 .6em;text-align:center">Demo A</p>
+            <video controls preload="metadata" poster="assets/video1_poster.jpg">
+              <source src="assets/video1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
-          <div class="caption">鼠标悬停显示 “Ours”。也可换成两段短视频（GIF/MP4）做切换。</div>
-        </div>
-        <div>
-          <h3>Per-frame Editing → Ours</h3>
-          <div class="hover-swap">
-            <img src="assets/baseline_frame.jpg" alt="Baseline">
-            <img class="top" src="assets/ours_frame2.jpg" alt="Ours">
+          <div>
+            <p style="margin:.2em 0 .6em;text-align:center">Demo B</p>
+            <video controls preload="metadata" poster="assets/video2_poster.jpg">
+              <source src="assets/video2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
-          <div class="caption">展示结构一致性与时序稳定的提升。</div>
         </div>
       </div>
     </section>
 
-    <!-- BibTeX -->
-    <section id="bibtex" class="card pad">
+    <!-- 引用 -->
+    <section id="bibtex">
       <h2>BibTeX</h2>
-      <pre style="white-space:pre-wrap;margin:0"><code>@article{YourKey2025,
+      <div class="center">
+        <pre style="background:#f6f8fa;border:1px solid #eaecef;border-radius:6px;padding:14px;overflow:auto">
+@article{YourKey2025,
   title   = {PAPER_TITLE_HERE},
   author  = {Author A and Author B and Author C},
   journal = {Journal / arXiv preprint arXiv:XXXX.XXXXX},
   year    = {2025}
-}</code></pre>
-    </section>
-
-    <!-- 致谢 -->
-    <section id="ack" class="card pad">
-      <h2>Acknowledgements</h2>
-      <p>在此致谢经费、数据、同行建议与开源库等支持。</p>
+}
+        </pre>
+      </div>
     </section>
 
     <footer>
-      <p>© <span id="year"></span> Authors. Hosted on GitHub Pages.</p>
-      <p class="muted" style="font-size:14px">
-        Template inspired by TokenFlow project page. 
-      </p>
+      © <span id="year"></span> Authors. Hosted on GitHub Pages.
     </footer>
-  </main>
+  </div>
 
-  <script>
-    // 年份 & 更新时间
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // 如需自动更新时间，取消下一行注释
-    // document.getElementById('last-updated').textContent = new Date().toISOString().slice(0,10);
-  </script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
