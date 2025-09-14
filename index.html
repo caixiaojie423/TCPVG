@@ -38,6 +38,7 @@
   @media (max-width:820px){.method-grid,.method-caption{grid-template-columns:1fr 1fr}.videos,.results-grid{grid-template-columns:1fr}}
   video{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);background:#000}
   footer{border-top:1px solid var(--line);text-align:center;color:var(--muted);padding:24px 0;margin-top:20px;font-size:14px}
+  .note{color:var(--muted);text-align:center;font-size:14px}
 </style>
 </head>
 <body>
@@ -50,15 +51,15 @@
         <span class="venue">ICLR 2024（示例）</span>
       </div>
       <div class="badges">
-        <a class="badge" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">📄 Paper</a>
+        <a class="badge" href="#" target="_blank">📄 Paper</a>
         <a class="badge" href="#" target="_blank">📦 Supplementary</a>
-        <a class="badge" href="https://github.com/your/repo" target="_blank">💻 Code</a>
+        <a class="badge" href="#" target="_blank">💻 Code</a>
         <a class="badge" href="#videos">🎥 Demo</a>
         <a class="badge" href="#" target="_blank">🧠 arXiv</a>
       </div>
       <div class="hero">
-        <!-- 顶部展示图（可放 teaser 帧或短动图） -->
-        <img src="assets/teaser.jpg" alt="teaser / keyframe">
+        <!-- 顶部展示图：加载失败时显示占位符 -->
+        <img src="assets/teaser.jpg" alt="teaser / keyframe" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 800 450\'><rect width=\'800\' height=\'450\' fill=\'%23f3f6fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'24\' fill=\'%235b6672\'>Teaser Placeholder</text></svg>'">
       </div>
     </header>
 
@@ -85,12 +86,13 @@
 
         <!-- 三列对比示例（上两行图片 + 下方说明） -->
         <div class="method-grid">
-          <img src="assets/method_row1_col1.jpg" alt="Original">
-          <img src="assets/method_row1_col2.jpg" alt="Per-frame">
-          <img src="assets/method_row1_col3.jpg" alt="Ours">
-          <img src="assets/method_row2_col1.jpg" alt="Original">
-          <img src="assets/method_row2_col2.jpg" alt="Per-frame">
-          <img src="assets/method_row2_col3.jpg" alt="Ours">
+          <img src="assets/method_row1_col1.jpg" alt="Original" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Original</text></svg>'">
+          <img src="assets/method_row1_col2.jpg" alt="Per-frame" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Per-frame</text></svg>'">
+          <img src="assets/method_row1_col3.jpg" alt="Ours" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Ours</text></svg>'">
+
+          <img src="assets/method_row2_col1.jpg" alt="Original" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Original</text></svg>'">
+          <img src="assets/method_row2_col2.jpg" alt="Per-frame" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Per-frame</text></svg>'">
+          <img src="assets/method_row2_col3.jpg" alt="Ours" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Ours</text></svg>'">
         </div>
         <div class="method-caption">
           <div>Original</div><div>Per-frame Editing</div><div>Ours</div>
@@ -104,7 +106,7 @@
 
       <!-- Pipeline 图 -->
       <div class="pipeline" style="margin-top:18px">
-        <img src="assets/pipeline.png" alt="Pipeline diagram">
+        <img src="assets/pipeline.png" alt="Pipeline diagram" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 880 420\'><rect width=\'880\' height=\'420\' fill=\'%23f3f6fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'22\' fill=\'%235b6672\'>Pipeline Placeholder</text></svg>'">
       </div>
     </section>
 
@@ -112,14 +114,14 @@
     <section id="results">
       <h2>Editing Results</h2>
       <div class="center">
-        <p class="muted" style="text-align:center">（可替换为动图或每格悬停切换原图与结果）</p>
+        <p class="note">（可替换为动图或每格悬停切换原图与结果）</p>
         <div class="results-grid">
-          <img src="assets/res_01.jpg" alt="result 1">
-          <img src="assets/res_02.jpg" alt="result 2">
-          <img src="assets/res_03.jpg" alt="result 3">
-          <img src="assets/res_04.jpg" alt="result 4">
-          <img src="assets/res_05.jpg" alt="result 5">
-          <img src="assets/res_06.jpg" alt="result 6">
+          <img src="assets/res_01.jpg" alt="result 1" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
+          <img src="assets/res_02.jpg" alt="result 2" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
+          <img src="assets/res_03.jpg" alt="result 3" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
+          <img src="assets/res_04.jpg" alt="result 4" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
+          <img src="assets/res_05.jpg" alt="result 5" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
+          <img src="assets/res_06.jpg" alt="result 6" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
         </div>
       </div>
     </section>
@@ -131,14 +133,14 @@
         <div class="videos">
           <div>
             <p style="margin:.2em 0 .6em;text-align:center">Demo A</p>
-            <video controls preload="metadata" poster="assets/video1_poster.jpg">
+            <video controls preload="metadata" poster="assets/video1_poster.jpg" onerror="this.poster='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 640 360\'><rect width=\'640\' height=\'360\' fill=\'%23f3f6fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Video Poster</text></svg>'">
               <source src="assets/video1.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div>
             <p style="margin:.2em 0 .6em;text-align:center">Demo B</p>
-            <video controls preload="metadata" poster="assets/video2_poster.jpg">
+            <video controls preload="metadata" poster="assets/video2_poster.jpg" onerror="this.poster='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 640 360\'><rect width=\'640\' height=\'360\' fill=\'%23f3f6fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Video Poster</text></svg>'">
               <source src="assets/video2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -151,8 +153,7 @@
     <section id="bibtex">
       <h2>BibTeX</h2>
       <div class="center">
-        <pre style="background:#f6f8fa;border:1px solid #eaecef;border-radius:6px;padding:14px;overflow:auto">
-@article{YourKey2025,
+        <pre style="background:#f6f8fa;border:1px solid #eaecef;border-radius:6px;padding:14px;overflow:auto">@article{YourKey2025,
   title   = {PAPER_TITLE_HERE},
   author  = {Author A and Author B and Author C},
   journal = {Journal / arXiv preprint arXiv:XXXX.XXXXX},
