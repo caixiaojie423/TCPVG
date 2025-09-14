@@ -45,17 +45,15 @@
   <div class="wrap">
     <!-- 顶部：标题 / 作者 / 会议 / 徽章 -->
     <header>
-      <h1>PAPER_TITLE_HERE: Optional Subtitle</h1>
+      <h1>TCPVG: Temporally Consistent Post-orthodontic Video Generation via Frequency and Flow Fusion</h1>
       <div class="authors">
-        <a href="#">Author A</a>, <a href="#">Author B</a>, <a href="#">Author C</a><br>
-        <span class="venue">ICLR 2024（示例）</span>
+        <a href="#">WenjieCai</a>, <a href="#">Yan Tian</a>, <a href="#"></a><br>
+        <span class="venue"></span>
       </div>
       <div class="badges">
         <a class="badge" href="#" target="_blank">📄 Paper</a>
-        <a class="badge" href="#" target="_blank">📦 Supplementary</a>
         <a class="badge" href="#" target="_blank">💻 Code</a>
         <a class="badge" href="#videos">🎥 Demo</a>
-        <a class="badge" href="#" target="_blank">🧠 arXiv</a>
       </div>
       <div class="hero">
         <!-- 顶部展示图：加载失败时显示占位符 -->
@@ -67,62 +65,13 @@
     <section id="abstract">
       <h2>Abstract</h2>
       <div class="center">
-        <p>
-          在此粘贴你的摘要。保持与论文一致。可用一两句话点出你们的核心发现，例如：
-          我们观察到视频的一致性与扩散模型内部特征的时序一致性高度相关，因此提出
-          <strong>METHOD_NAME</strong> 来在无需额外训练的情况下实现稳定的视频编辑/生成。
+        <p>Recent advances in diffusion models have made post-orthodontic video generation (PVG) feasible, offering richer previews of treatment outcomes than static images. However, PVG still faces two key challenges: a domain gap between the 3D tooth-model contours used during training and the 2D segmentations available at inference, and rapid, highly non-rigid speech-driven oral motions that degrade temporal consistency. To address these issues, We propose Temporally Consistent Post-orthodontic Video Generation (TCPVG), a diffusion-based framework that, given a talking video, synthesizes a temporally coherent post-orthodontic result. TCPVG incorporates a Dual-Encoder Frequency-Fusion network that performs adaptive frequency-domain fusion to mitigate the 3D-to-2D domain gap, and introduces a flow-guided temporal-attention module that leverages dense optical flow with step-adaptive fusion to enhance stability under fast oral movements. Extensive experiments demonstrate that TCPVG surpasses strong baselines in both perceptual fidelity and temporal coherence.
         </p>
       </div>
     </section>
-
-    <!-- Method（含三列对比 + 文字 + Pipeline 图） -->
-    <section id="method">
-      <h2>Method</h2>
-      <div class="center">
-        <p>
-          简述整体思路与关键组件（例如 token 传播、特征对齐、频域融合、流引导注意力等），
-          对应下方示例对比图与 Pipeline。
-        </p>
-
-        <!-- 三列对比示例（上两行图片 + 下方说明） -->
-        <div class="method-grid">
-          <img src="assets/method_row1_col1.jpg" alt="Original" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Original</text></svg>'">
-          <img src="assets/method_row1_col2.jpg" alt="Per-frame" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Per-frame</text></svg>'">
-          <img src="assets/method_row1_col3.jpg" alt="Ours" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Ours</text></svg>'">
-
-          <img src="assets/method_row2_col1.jpg" alt="Original" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Original</text></svg>'">
-          <img src="assets/method_row2_col2.jpg" alt="Per-frame" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Per-frame</text></svg>'">
-          <img src="assets/method_row2_col3.jpg" alt="Ours" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 160\'><rect width=\'240\' height=\'160\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'14\' fill=\'%235b6672\'>Ours</text></svg>'">
-        </div>
-        <div class="method-caption">
-          <div>Original</div><div>Per-frame Editing</div><div>Ours</div>
-        </div>
-
-        <p>
-          我们的关键结论：通过在扩散模型内部的一致性约束（如注意力特征对齐、跨帧 token 传播等），
-          可在不同场景与风格下显著提升时序稳定性，同时保持高质量的编辑效果。
-        </p>
-      </div>
-
       <!-- Pipeline 图 -->
       <div class="pipeline" style="margin-top:18px">
         <img src="assets/pipeline.png" alt="Pipeline diagram" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 880 420\'><rect width=\'880\' height=\'420\' fill=\'%23f3f6fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'22\' fill=\'%235b6672\'>Pipeline Placeholder</text></svg>'">
-      </div>
-    </section>
-
-    <!-- 结果网格（静态帧或短动图） -->
-    <section id="results">
-      <h2>Editing Results</h2>
-      <div class="center">
-        <p class="note">（可替换为动图或每格悬停切换原图与结果）</p>
-        <div class="results-grid">
-          <img src="assets/res_01.jpg" alt="result 1" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
-          <img src="assets/res_02.jpg" alt="result 2" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
-          <img src="assets/res_03.jpg" alt="result 3" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
-          <img src="assets/res_04.jpg" alt="result 4" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
-          <img src="assets/res_05.jpg" alt="result 5" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
-          <img src="assets/res_06.jpg" alt="result 6" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 600 340\'><rect width=\'600\' height=\'340\' fill=\'%23f6f8fa\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'18\' fill=\'%235b6672\'>Result</text></svg>'">
-        </div>
       </div>
     </section>
 
@@ -149,19 +98,6 @@
       </div>
     </section>
 
-    <!-- 引用 -->
-    <section id="bibtex">
-      <h2>BibTeX</h2>
-      <div class="center">
-        <pre style="background:#f6f8fa;border:1px solid #eaecef;border-radius:6px;padding:14px;overflow:auto">@article{YourKey2025,
-  title   = {PAPER_TITLE_HERE},
-  author  = {Author A and Author B and Author C},
-  journal = {Journal / arXiv preprint arXiv:XXXX.XXXXX},
-  year    = {2025}
-}
-        </pre>
-      </div>
-    </section>
 
     <footer>
       © <span id="year"></span> Authors. Hosted on GitHub Pages.
